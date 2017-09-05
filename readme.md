@@ -5,7 +5,7 @@
 # install dependencies
 npm install
 
-# serve with reload at localhost:5555
+# serve with reload at localhost:9399
 npm run dev
 
 # build for production width minification

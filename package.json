@@ -1,14 +1,19 @@
 {
-  "name": "practice-vue",
+  "name": "vue-study",
   "version": "1.0.0",
   "description": "vue study for Tech Review",
   "main": "main.js",
+  "homepage": "https://github.com/jodeng110/vue-study/",
+  "bugs": {
+    "url": "https://github.com/jodeng110/vue-study/issues",
+    "email": "jodeng110@gmail.com"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js"
   },
-  "author": "Jenny Cho",
+  "author": "Jodeng",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
