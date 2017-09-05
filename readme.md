@@ -1,5 +1,5 @@
-# Technical Review - vue.js 
-> Vue Study Project
+# Vue Study
+> [Demo](https://jodeng110.github.io/vue-study/)
 
 ```bash
 # install dependencies
