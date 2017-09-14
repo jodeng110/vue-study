@@ -2,11 +2,8 @@
   <div id="practice" class="page">
     <nav class="list">
       <ul>
-        <li>
-          <router-link to="/practice/declarative-rendering">선언적 렌더링</router-link>
-        </li>
-        <li>
-          <router-link to="/practice/conditionals-and-loops">조건문과 반복문</router-link>
+        <li v-for="menuItem in menuList">
+          <router-link v-bind:to="menuItem.to">{{menuItem.title}}</router-link>
         </li>
       </ul>
     </nav>
@@ -18,11 +15,19 @@
 </template>
 
 <script>
+  const practiceList = [
+    {title: '선언적 렌더링', to: '/practice/declarative-rendering'},
+    {title: '조건문과 반복문', to: '/practice/conditionals-and-loops'},
+    {title: '사용자 입력 핸들링', to: '/practice/handling-user-input'},
+    {title: '컴포넌트를 사용한 작성방법', to: '/practice/composing-with-component'},
+    {title: '생명주기', to: '/practice/lifecycle'},
+  ];
   export default {
     name: 'Practice',
     data () {
       return {
-        title: '실습 페이지'
+        title: '실습 페이지',
+        menuList: practiceList
       }
     }
   }
@@ -42,7 +47,7 @@
         padding: 0;
         
         li {
-          width: 200px;
+          width: 250px;
           list-style: none;
           
           a {
@@ -64,30 +69,31 @@
     section {
       border: 1px solid #ccc;
       float: left;
-      width: calc(100% - 225px);
+      width: calc(100% - 275px);
       .view {
+        display: table;
+        width: 100%;
+
         >.source {
-          display: inline-block;
+          display: table-cell;
           width: 100%;
-          float: left;
-          //border-left: 2px solid #35b883;
   
           @media screen and (min-width: 768px) {
             width: 50%;
           }
           
           textarea {
+            font-size: 14px;
             width: 100%;
             resize: none;
           }
         }
   
         >.result {
-          display: inline-block;
+          display: table-cell;
           width: 100%;
           padding-left: 20px;
-          float: left;
-          //border-left: 2px solid #35b883;
+          vertical-align: top;
   
           @media screen and (min-width: 480px) {
             width: 50%;

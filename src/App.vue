@@ -1,25 +1,15 @@
 <template>
   <div id="app">
-    
+    <!--<p v-lang.hello></p>-->
     <header>
       <img src="./assets/logo.png" width="50" height="50">
       <span class="title">{{title}}</span>
+
+      <span class="date-time">{{ currentTime }}</span>
     </header>
-    
-    <nav id="menu">
-      <ul>
-        <li>
-          <router-link to="/intro">소개</router-link>
-        </li>
-        <li>
-          <router-link to="/practice">실습</router-link>
-        </li>
-        <li>
-          <router-link to="/further">응용</router-link>
-        </li>
-      </ul>
-    </nav>
-    
+
+    <nav-menu v-bind:menu-list="menus"></nav-menu>
+
     <section>
       <router-view></router-view>
     </section>
@@ -28,25 +18,51 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      title: 'Vue.js Study'
-    }
+  import moment from "moment";
+  import NavMenu from './spa/components/NavMenu'
+
+  const menus = [
+    { to: '/intro', title: '소개', value: 'intro'},
+    { to: '/practice', title: '실습', value: 'practice'},
+    { to: '/further', title: '응용', value: 'case'},
+  ];
+
+  export default {
+    name: 'app',
+    data () {
+      return {
+        title: 'Vue.js Study',
+        menus: menus,
+        currentTime: null
+      }
+    },
+    components: {
+      NavMenu
+    },
+    methods: {
+      updateCurrentTime() {
+        this.currentTime = moment().format('ll LTS');
+      }
+    },
+    created() {
+      this.currentTime = moment().format('ll LTS');
+      setInterval(() => this.updateCurrentTime(), 1*1000);
+    },
   }
-}
 </script>
 
 <style lang="scss">
-  $vue-cobalt-blut: #35495e;
-  $vue-green: #35b883;
   #app {
+    $vue-cobalt-blue: #35495e;
+    $vue-green: #35b883;
+
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /*text-align: center;*/
     /*color: #2c3e50;*/
+    .color-blue { color: $vue-cobalt-blue; }
+    .color-green { color: $vue-green; }
     
     header {
       padding-top: 25px;
@@ -61,32 +77,12 @@ export default {
         font-size: 25px;
         font-weight: bold;
       }
-    }
-    
-    nav#menu {
-      background-color: $vue-cobalt-blut;
-      ul {
-        margin: 0;
-        height: 50px;
-        li {
-          list-style: none;
-          display: inline-block;
-          
-          a {
-            display: inline-block;
-            width: 100px;
-            text-decoration: none;
-            color: #fff;
-            line-height: 50px;
-            text-align: center;
-            
-            &.router-link-active {
-              background-color: $vue-green;
-            }
-          }
-          
-          
-        }
+
+      .date-time {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.7em;
       }
     }
   }

@@ -3,17 +3,21 @@
     <div class="source">
       <textarea class="html" readonly="readonly" disabled>{{code.htmlTemplate}}</textarea>
       <textarea class="js" readonly="readonly" disabled>{{code.script}}</textarea>
-      </div>
+    </div>
     
     <div class="result">
       {{ message }}
+      <span v-bind:title="message">여기에 마우스 올려보세요!</span>
     </div>
   </div>
 </template>
 
 <script>
   const html = [
-    '<div>{{ message }}</div>'
+    '<div>\n',
+    '  {{ message }}\n',
+    '  <span v-bind:title="message">여기에 마우스 올려보세요!</span>\n',
+    '</div>',
   ].join('');
   
   const script = [
@@ -24,7 +28,7 @@
     '        message: \'Hello Jodeng!\'\n',
     '      }\n',
     '    }\n',
-    '  }\n'
+    '  }'
   ].join('');
   
   export default {
@@ -47,7 +51,7 @@
     .source {
       textarea {
         &.html {
-          height: 50px;
+          height: 120px;
         }
         &.js {
           height: 200px;

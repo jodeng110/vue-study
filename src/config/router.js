@@ -6,6 +6,9 @@ import Further from '@/spa/Further/Further'
 
 import DeclarativeRendering from '@/spa/Practice/components/DeclarativeRendering'
 import ConditionalsAndLoops from '@/spa/Practice/components/ConditionalsAndLoops'
+import HandlingUserInput from '@/spa/Practice/components/HandlingUserInput'
+import ComposingWithComponent from '@/spa/Practice/components/ComposingWithComponent'
+import LifecycleComponent from '@/spa/Practice/components/Lifecycle'
 
 Vue.use(Router);
 
@@ -28,6 +31,18 @@ const practice = {
     {
       path: 'conditionals-and-loops',
       component: ConditionalsAndLoops
+    },
+    {
+      path: 'handling-user-input',
+      component: HandlingUserInput
+    },
+    {
+      path: 'composing-with-component',
+      component: ComposingWithComponent
+    },
+    {
+      path: 'lifecycle',
+      component: LifecycleComponent
     },
     
   ]
