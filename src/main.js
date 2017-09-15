@@ -2,9 +2,13 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './config/router'
-import MultiLanguage from 'vue-multilanguage'
-import _ from 'lodash'
+import VueI18n from 'vue-i18n'
 
+import _ from 'lodash'
+import moment from 'moment'
+import VueMomentJS from 'vue-momentjs'
+import 'moment/locale/ja'
+import 'moment/locale/ko'
 
 // BootstrapVue
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,19 +18,18 @@ import language from './i18n/language'
 
 Vue.use(_);
 Vue.use(BootstrapVue);
-Vue.use(MultiLanguage, language);
+Vue.use(VueI18n);
+Vue.use(VueMomentJS, moment);
 
 Vue.config.productionTip = false
-Vue.prototype.$language = 'kr';
-Vue.prototype.$langCode = 'kr';
-Vue.prototype.$title2 = '테스트2';
-Vue.prototype.$title = '테스트';
-
 
 new Vue({
   el: '#app',
+  i18n: language,
   router,
-  render: h => h(App)
+  render (h) {
+    return h(App);
+  }
 });
 
 /*

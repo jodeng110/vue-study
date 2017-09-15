@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <!--<p v-lang.hello></p>-->
     <header>
       <img src="./assets/logo.png" width="50" height="50">
       <span class="title">{{title}}</span>
 
       <span class="date-time">{{ currentTime }}</span>
+      <!--<icon></icon>-->
     </header>
 
     <nav-menu v-bind:menu-list="menus"></nav-menu>
@@ -18,13 +18,12 @@
 </template>
 
 <script>
-  import moment from "moment";
   import NavMenu from './spa/components/NavMenu'
 
   const menus = [
-    { to: '/intro', title: '소개', value: 'intro'},
+    { to: '/intro', title: '소개', value: 'introduce'},
     { to: '/practice', title: '실습', value: 'practice'},
-    { to: '/further', title: '응용', value: 'case'},
+    { to: '/further', title: '응용', value: 'examples'},
   ];
 
   export default {
@@ -41,11 +40,11 @@
     },
     methods: {
       updateCurrentTime() {
-        this.currentTime = moment().format('ll LTS');
+        this.currentTime = this.$moment().format('ll LTS');
       }
     },
     created() {
-      this.currentTime = moment().format('ll LTS');
+      this.currentTime = this.$moment().format('ll LTS');
       setInterval(() => this.updateCurrentTime(), 1*1000);
     },
   }

@@ -1,18 +1,18 @@
 <template>
   <nav class="menu">
     <ul>
-      <!--<li v-for="menuItem in menuList">-->
-        <!--<router-link v-bind:to="menuItem.to" v-lang>{{ menuItem.title }}</router-link>-->
+      <li v-for="menuItem in menuList">
+        <router-link v-bind:to="menuItem.to" >{{ $t(menuItem.value) }}</router-link>
+      </li>
+      <!--<li>-->
+        <!--<router-link to="/intro">{{ intro }}</router-link>-->
       <!--</li>-->
-      <li>
-        <router-link to="/intro">{{ intro }}</router-link>
-      </li>
-      <li>
-        <router-link to="/practice">{{ practice }}</router-link>
-      </li>
-      <li>
-        <router-link to="/further">{{ examples }}</router-link>
-      </li>
+      <!--<li>-->
+        <!--<router-link to="/practice">{{ practice }}</router-link>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<router-link to="/further">{{ examples }}</router-link>-->
+      <!--</li>-->
     </ul>
 
     <b-dropdown right class="ddl-lang" v-bind:text="selectedLang.title">
@@ -27,9 +27,9 @@
   import { bDropdown } from 'bootstrap-vue/lib/components';
 
   const langs = [
-    {imgSrc: 'assets/flags/us.png', title:"English", code: "us"},
-    {imgSrc: 'assets/flags/kr.png', title:"한국어", code: "kr"},
-    {imgSrc: 'assets/flags/jp.png', title:"日本語", code: "jp"}
+    {imgSrc: './static/assets/flags/us.png', title:"English", code: "en"},
+    {imgSrc: './static/assets/flags/kr.png', title:"한국어", code: "ko"},
+    {imgSrc: './static/assets/flags/jp.png', title:"日本語", code: "ja"}
   ];
 
   export default {
@@ -54,11 +54,11 @@
         return this.translate(this.$language, 'introduce');
       },
       practice() {
-        this.$language = this.$language || 'kr';
+        this.$language = this.$language || 'ko';
         return this.translate(this.$language, 'practice');
       },
       examples() {
-        this.$language = this.$language || 'kr';
+        this.$language = this.$language || 'ko';
         return this.translate(this.$language, 'examples');
       }
     },
@@ -66,6 +66,8 @@
       changeLang(lang) {
         this.selectedLang = lang;
         this.$language = lang.code;
+        this.$moment.locale(lang.code);
+        this.$i18n.locale = lang.code;
       }
     }
   }

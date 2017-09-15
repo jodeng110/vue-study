@@ -1,11 +1,13 @@
-import us from './us/index'
-import jp from './jp/index'
-import kr from './kr/index'
+import en from './en/index'
+import ja from './ja/index'
+import ko from './ko/index'
 //import cn from './i18n_zh-cn.json'
 
 export default {
-  default: 'kr',
-  us: us,
-  jp: jp,
-  kr: kr
+  locale: 'ko',
+  messages: {
+    en: en,
+    ja: ja,
+    ko: ko
+  }
 }
